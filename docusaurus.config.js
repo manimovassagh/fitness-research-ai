@@ -70,7 +70,7 @@ const config = {
           items: [
             {
               label: 'Supplements vs Steroids',
-              to: '/docs/supplements-vs-steroids',
+              to: '/supplements-vs-steroids',
             },
           ],
         },
