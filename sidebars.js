@@ -21,18 +21,6 @@ module.exports = {
         'supplements-vs-steroids',
       ],
     },
-    {
-      type: 'category',
-      label: '📚 Coming Soon',
-      collapsed: true,
-      items: [
-        {
-          type: 'doc',
-          id: 'coming-soon/placeholder',
-          label: 'More research topics in development...',
-        },
-      ],
-    },
   ],
 };
 
