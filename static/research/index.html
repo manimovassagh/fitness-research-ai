@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Research AI — LLM-Powered Fitness Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #1d9e75;
+    --accent-deep: #0f6e56;
+    --bg: #f4efe6;
+    --paper: #fffdf8;
+    --ink: #1c1a16;
+    --muted: #6b6358;
+    --line: #e2d9c8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Geist', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.95;
+    font-weight: 400;
+    font-size: 16px;
+    background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.025) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 22px 80px;
+  }
+  header {
+    padding: 80px 0 40px;
+    text-align: center;
+  }
+  .kicker {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--accent-deep);
+    background: linear-gradient(transparent 62%, color-mix(in srgb, var(--accent) 28%, transparent) 62%);
+    padding: 2px 4px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: clamp(36px, 7vw, 54px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+  }
+  .tagline {
+    color: var(--muted);
+    font-size: 18px;
+    margin-top: 12px;
+    font-weight: 400;
+  }
+  .rule {
+    height: 3px;
+    width: 64px;
+    background: var(--accent);
+    margin: 28px auto 0;
+    border-radius: 3px;
+  }
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin: 60px 0;
+  }
+  .research-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .research-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    border-color: var(--accent);
+  }
+  .research-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent);
+  }
+  .research-card .title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    margin-top: 8px;
+  }
+  .research-card .description {
+    font-size: 14.5px;
+    color: var(--muted);
+    flex-grow: 1;
+    margin-bottom: 16px;
+  }
+  .research-card .date {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    width: fit-content;
+  }
+  footer {
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 60px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .gh-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .gh-link:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">RESEARCH COLLECTION</div>
+    <h1>Fitness Research AI</h1>
+    <p class="tagline">Evidence-based research powered by LLMs for personal fitness knowledge</p>
+    <div class="rule"></div>
+  </header>
+
+  <section class="research-grid">
+    <a href="supplements-vs-steroids.html" class="research-card">
+      <span class="badge">NEW</span>
+      <h2 class="title">Supplements vs Steroids</h2>
+      <p class="description">Can we find supplements that work similarly to steroids or come close to their effects? A comprehensive evidence-based analysis.</p>
+      <span class="date">July 2026</span>
+    </a>
+
+    <a href="mokammel-shabe-esteroeid-fa.html" class="research-card">
+      <h2 class="title">آیا مکمل قانونی «شبه‌استروئید» وجود دارد؟</h2>
+      <p class="description">تحقیق مبتنی بر شواهد درباره مکمل‌های قانونی که می‌توانند شبه استروئید باشند.</p>
+      <span class="date">Persian Research</span>
+    </a>
+  </section>
+
+  <footer>
+    <p>📊 Research conducted with multiple LLMs for verification and accuracy<br>
+    <a href="https://github.com/manimovassagh/fitness-research-ai" class="gh-link">View on GitHub</a></p>
+  </footer>
+</div>
+</body>
+</html>

@@ -2,17 +2,20 @@
 
 const config = {
   title: 'Fitness Research AI',
-  tagline: 'Evidence-based fitness research powered by LLMs',
-  favicon: 'img/favicon.ico',
+  tagline: 'A personal research library for fitness, supplements, and training notes',
 
-  url: 'https://yourusername.github.io',
+  url: 'https://manimovassagh.github.io',
   baseUrl: '/fitness-research-ai/',
-  organizationName: 'yourusername',
+  organizationName: 'manimovassagh',
   projectName: 'fitness-research-ai',
-  deploymentBranch: 'gh-pages',
 
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'throw',
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -25,13 +28,10 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/docs',
-          editUrl: 'https://github.com/yourusername/fitness-research-ai/tree/main/',
+          routeBasePath: '/',
+          editUrl: 'https://github.com/manimovassagh/fitness-research-ai/tree/main/',
         },
-        blog: {
-          showReadingTime: true,
-          editUrl: 'https://github.com/yourusername/fitness-research-ai/tree/main/',
-        },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -40,23 +40,22 @@ const config = {
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Fitness Research AI',
-      logo: {
-        alt: 'Fitness Research',
-        src: 'img/logo.svg',
-      },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'researchSidebar',
           position: 'left',
           label: 'Research',
         },
-        { to: '/blog', label: 'Updates', position: 'left' },
         {
-          href: 'https://github.com/yourusername/fitness-research-ai',
+          to: '/more-research',
+          label: 'More',
+          position: 'left',
+        },
+        {
+          href: 'https://github.com/manimovassagh/fitness-research-ai',
           label: 'GitHub',
           position: 'right',
         },
@@ -69,22 +68,30 @@ const config = {
           title: 'Research',
           items: [
             {
-              label: 'Supplements vs Steroids',
-              to: '/docs/supplements-vs-steroids',
+              label: 'English research',
+              to: '/supplements-vs-steroids',
+            },
+            {
+              label: 'Persian research',
+              to: '/mokammel-shabe-esteroeid-fa',
+            },
+            {
+              label: 'More research',
+              to: '/more-research',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Project',
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/yourusername/fitness-research-ai',
+              href: 'https://github.com/manimovassagh/fitness-research-ai',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Fitness Research AI. Built with Docusaurus by Meta.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Fitness Research AI.`,
     },
     prism: {
       theme: require('prism-react-renderer').themes.github,
