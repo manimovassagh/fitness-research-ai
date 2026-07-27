@@ -68,12 +68,8 @@ const config = {
           title: 'Research',
           items: [
             {
-              label: 'English research',
+              label: 'First research',
               to: '/supplements-vs-steroids',
-            },
-            {
-              label: 'Persian research',
-              to: '/mokammel-shabe-esteroeid-fa',
             },
             {
               label: 'More research',

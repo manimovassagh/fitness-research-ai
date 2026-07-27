@@ -6,12 +6,9 @@ module.exports = {
       label: 'Overview',
     },
     {
-      type: 'category',
+      type: 'doc',
+      id: 'supplements-vs-steroids',
       label: 'First research',
-      items: [
-        'supplements-vs-steroids',
-        'mokammel-shabe-esteroeid-fa',
-      ],
     },
     {
       type: 'doc',
