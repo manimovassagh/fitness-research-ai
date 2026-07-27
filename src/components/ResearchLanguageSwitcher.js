@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from 'react';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import ResearchHtmlViewer from '@site/src/components/ResearchHtmlViewer';
 
 const LANGUAGES = [
   {
@@ -26,7 +26,6 @@ export default function ResearchLanguageSwitcher() {
     () => LANGUAGES.find((language) => language.key === activeKey) ?? LANGUAGES[0],
     [activeKey],
   );
-  const frameSrc = useBaseUrl(activeLanguage.src);
 
   return (
     <section className="research-switcher">
@@ -56,8 +55,8 @@ export default function ResearchLanguageSwitcher() {
         </div>
       </div>
 
-      <div className="research-frame-shell research-frame-shell--full" dir={activeLanguage.direction}>
-        <iframe className="research-frame" src={frameSrc} title={activeLanguage.title} />
+      <div dir={activeLanguage.direction}>
+        <ResearchHtmlViewer src={activeLanguage.src} title={activeLanguage.title} />
       </div>
     </section>
   );
