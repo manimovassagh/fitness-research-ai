@@ -25,6 +25,7 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/',
           editUrl: 'https://github.com/yourusername/fitness-research-ai/tree/main/',
         },
         blog: {

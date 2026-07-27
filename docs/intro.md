@@ -1,6 +1,5 @@
 ---
 sidebar_position: 0
-slug: /
 title: Welcome to Fitness Research AI
 description: Evidence-based fitness research powered by LLMs
 ---
