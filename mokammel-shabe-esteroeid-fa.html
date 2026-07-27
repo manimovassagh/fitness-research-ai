@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آیا مکمل قانونی «شبه‌استروئید» وجود دارد؟ — بررسی مبتنی بر شواهد</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{
+    --accent:#1d9e75; --accent-deep:#0f6e56;
+    --bg:#f4efe6; --paper:#fffdf8; --ink:#1c1a16; --muted:#6b6358; --line:#e2d9c8;
+    --up:#1d9e75; --down:#cf3b32;
+    --amber-bg:#faeeda; --amber-ink:#633806;
+    --teal-bg:#e1f5ee; --teal-ink:#085041;
+    --blue-bg:#e6f1fb; --blue-ink:#0c447c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Vazirmatn',sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.95;font-weight:400;font-size:17px;
+    background-image:radial-gradient(circle at 1px 1px, rgba(0,0,0,0.025) 1px, transparent 0);
+    background-size:22px 22px}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px 80px}
+  header{padding:64px 0 36px;text-align:center}
+  .kicker{display:inline-block;font-size:13px;letter-spacing:1px;color:var(--accent-deep);
+    background:linear-gradient(transparent 62%, color-mix(in srgb, var(--accent) 28%, transparent) 62%);
+    padding:2px 4px;font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(30px,6vw,46px);font-weight:900;line-height:1.35;letter-spacing:-.5px}
+  .date{color:var(--muted);font-size:15px;margin-top:14px;font-weight:300}
+  .rule{height:3px;width:64px;background:var(--accent);margin:26px auto 0;border-radius:3px}
+  .disclaimer{background:var(--paper);border:1px solid var(--line);border-right:4px solid var(--accent);
+    border-radius:12px;padding:16px 20px;font-size:14.5px;color:var(--muted);margin:30px 0}
+  .disclaimer b{color:var(--ink);font-weight:700}
+  section{margin:46px 0}
+  h2{font-size:25px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  h2::before{content:"";width:9px;height:26px;background:var(--accent);border-radius:2px;display:inline-block;flex:none}
+  h3{font-size:18px;font-weight:700;margin:22px 0 6px;color:var(--accent-deep)}
+  p{margin:12px 0} .lead{font-size:18.5px}
+  .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:24px 0}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px;text-align:center}
+  .card .lbl{font-size:13.5px;color:var(--muted);line-height:1.6}
+  .card .val{font-size:30px;font-weight:900;margin-top:6px;direction:ltr}
+  .card .val.down{color:var(--down)} .card .val.warn{color:var(--accent-deep)}
+  .chartbox{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;margin:24px 0}
+  .chartbox .cap{font-size:13.5px;color:var(--muted);text-align:center;margin-top:12px}
+  .canvas-holder{position:relative;width:100%;height:320px}
+  .driver{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:14px 0;
+    display:flex;gap:16px;align-items:flex-start}
+  .driver .num{flex:none;width:38px;height:38px;border-radius:10px;background:var(--accent);color:#fff;
+    font-weight:900;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .driver h3{margin:2px 0 4px;color:var(--ink);font-size:17.5px}
+  .driver p{margin:4px 0;font-size:15.5px;color:var(--muted)}
+  .ladder{margin:22px 0}
+  .lv{border-radius:12px;padding:15px 20px;margin:7px 0;display:flex;align-items:center;gap:18px}
+  .lv .price{font-weight:900;font-size:16px;min-width:120px;flex:none}
+  .lv .desc{font-size:15px;line-height:1.75}
+  .lv.res{background:var(--amber-bg);color:var(--amber-ink)}
+  .lv.sup{background:var(--teal-bg);color:var(--teal-ink)}
+  .lv.now{background:var(--blue-bg);color:var(--blue-ink);border:2px solid #378add;padding:16px 20px}
+  .legend{display:flex;gap:24px;justify-content:center;font-size:14px;color:var(--muted);margin-top:14px;flex-wrap:wrap}
+  .dot{display:inline-block;width:13px;height:13px;border-radius:4px;vertical-align:-2px;margin-left:6px}
+  .fore{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 22px;margin:12px 0}
+  .fore h3{margin:0 0 4px} .fore p{font-size:15.5px;color:var(--muted);margin:2px 0}
+  .tag{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:1px 9px;margin-right:8px;vertical-align:2px}
+  .tag.s{background:var(--teal-bg);color:var(--teal-ink)}
+  .tag.m{background:var(--blue-bg);color:var(--blue-ink)}
+  .tag.w{background:var(--amber-bg);color:var(--amber-ink)}
+  .tag.n{background:#fbe4e2;color:#8c2b24}
+  ul.watch{list-style:none;margin:14px 0}
+  ul.watch li{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 20px;margin:9px 0;font-size:15.5px}
+  ul.watch li b{color:var(--accent-deep)}
+  .synth{background:#1c1a16;color:#f4efe6;border-radius:18px;padding:30px;margin:34px 0}
+  .synth h2{color:#fff} .synth h2::before{background:var(--accent)}
+  .synth p{color:#d8d0c2}
+  .synth .hinge{color:var(--accent);font-weight:700}
+  ol.refs{margin:16px 22px 0 0;font-size:14.5px;color:var(--muted);line-height:1.85}
+  ol.refs li{margin:9px 0;padding-right:6px}
+  ol.refs b{color:var(--ink);font-weight:700}
+  footer{text-align:center;color:var(--muted);font-size:13.5px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+  b,strong{font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="kicker">بررسی مبتنی بر شواهد</span>
+    <h1>آیا مکمل قانونیِ «شبه‌استروئید» وجود دارد؟</h1>
+    <p class="date">مروری نقادانه بر تورکسترون، اکدیستروئیدها، تقویت‌کننده‌های تستوسترون و مرزهای واقعی مکمل‌های ورزشی</p>
+    <div class="rule"></div>
+  </header>
+
+  <div class="disclaimer"><b>سلب مسئولیت:</b> این سند صرفاً جنبهٔ اطلاع‌رسانی و آموزشی دارد و جایگزین مشاورهٔ پزشکی نیست. هیچ راهنمایی برای تهیه، دوز یا مصرف مواد کنترل‌شده یا تأییدنشده در آن ارائه نشده است. هر تصمیم درمانی باید با پزشک گرفته شود.</div>
+
+  <section>
+    <h2>خلاصهٔ اجرایی</h2>
+    <p class="lead">پاسخ کوتاه و بدون حاشیه: <b>خیر.</b> هیچ مکمل قانونیِ در دسترسِ عموم، اثری «نزدیک به استروئید آنابولیک» ندارد. فاصله نه تدریجی، که یک نظم بزرگی (order of magnitude) است.</p>
+    <p>معیار سنجش را مطالعهٔ کلاسیک <b>Bhasin و همکاران (NEJM ۱۹۹۶)</b> تعیین می‌کند: مردانی که دوز فرافیزیولوژیک تستوسترون دریافت کردند، <b>بدون یک جلسه تمرین</b>، حدود <span class="ltr">۳.۲</span> کیلوگرم توده بدون‌چربی اضافه کردند — یعنی بیشتر از گروهی که با دارونما تمرین می‌کرد. در مقابل، مؤثرترین مکمل قانونی یعنی کراتین، در ترکیب با تمرین مقاومتی و در طول ماه‌ها، تنها حدود <span class="ltr">۱.۳۷</span> کیلوگرم مازاد بر دارونما می‌دهد.</p>
+    <p>در این میان، تورکسترون — که در سال‌های اخیر به‌عنوان «آنابولیک طبیعی» تبلیغ شده — نمونهٔ آموزنده‌ای از شکافِ میان بازاریابی و شواهد است: پژوهش انسانیِ مستقیم دربارهٔ آن تقریباً وجود ندارد، جذب خوراکی‌اش به‌شدت محدود است، و بازار محصولاتش دچار تقلب گسترده است.</p>
+    <div class="cards">
+      <div class="card"><div class="lbl">افزایش توده بدون‌چربی با تستوسترون، بدون تمرین (۱۰ هفته)</div><div class="val">۳.۲ kg</div></div>
+      <div class="card"><div class="lbl">مازاد کراتین + تمرین بر دارونما (متاآنالیز)</div><div class="val warn">۱.۳۷ kg</div></div>
+      <div class="card"><div class="lbl">مکمل‌هایی که هیچ اثری از مادهٔ برچسب‌خورده نداشتند</div><div class="val down">۴۰٪</div></div>
+      <div class="card"><div class="lbl">محصولات SARM آنلاین که واقعاً حاوی SARM بودند</div><div class="val down">۵۲٪</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>معیار واقعی: استروئید در برابر مکمل</h2>
+    <div class="chartbox">
+      <div class="canvas-holder">
+        <canvas id="chart1" role="img" aria-label="نمودار میله‌ای مقایسهٔ افزایش توده بدون‌چربی در چهار گروه مطالعهٔ Bhasin ۱۹۹۶">نمودار مقایسهٔ افزایش توده بدون‌چربی در چهار گروه مطالعهٔ Bhasin ۱۹۹۶</canvas>
+      </div>
+      <div class="cap">تغییر توده بدون‌چربی (کیلوگرم) در ۱۰ هفته — بر اساس مقادیر گزارش‌شده در Bhasin و همکاران، <span class="ltr">NEJM 1996;335:1–7</span>. برای مقایسه: اثر افزودهٔ کراتین بر تمرین مقاومتی در متاآنالیزها حدود <span class="ltr">۱.۳۷</span> کیلوگرم است — که مقایسه‌ای بین‌مطالعه‌ای و صرفاً برای درک مقیاس است.</div>
+    </div>
+    <p>نکتهٔ تعیین‌کننده در این داده‌ها این است که تزریق تستوسترون <b>بدون هیچ تمرینی</b> نتیجه‌ای بهتر از تمرین‌کردنِ جدی با دارونما داد. هر مکملی که ادعای «شبه‌استروئید بودن» دارد، باید در برابر همین معیار سنجیده شود — و هیچ‌کدام حتی از دور به آن نزدیک نمی‌شوند.</p>
+  </section>
+
+  <section>
+    <h2>مطالعهٔ موردی: تورکسترون</h2>
+    <p>تورکسترون یک اکدیستروئید (ecdysteroid) استخراج‌شده از گیاه <span class="ltr">Ajuga turkestanica</span> است. شش نکتهٔ زیر، کل پروندهٔ علمی آن را خلاصه می‌کند.</p>
+
+    <div class="driver"><div class="num">۱</div><div>
+      <h3>مکانیسم فرضی، نه اثبات‌شده <span class="tag w">شواهد ضعیف</span></h3>
+      <p>اکدیستروئیدها در حشرات از طریق «گیرندهٔ اکدیزون» (EcR) پوست‌اندازی را تنظیم می‌کنند — اما <b>پستانداران اصلاً چنین گیرنده‌ای ندارند</b>. فرضیهٔ غالب در انسان، اتصال ترجیحی به گیرندهٔ استروژن بتا (ERβ) و فعال‌سازی مسیر <span class="ltr">PI3K/Akt/mTOR</span> است؛ اما این یافته‌ها منحصر به کشت سلولی و شبیه‌سازی مولکولی‌اند.</p>
+    </div></div>
+
+    <div class="driver"><div class="num">۲</div><div>
+      <h3>خلط دو ترکیب متفاوت <span class="tag n">تقریباً هیچ</span></h3>
+      <p>تقریباً تمام «شواهد امیدوارکننده»‌ای که به تورکسترون نسبت داده می‌شود، در واقع مربوط به ترکیب خویشاوند یعنی <b>اکدیسترون</b> (<span class="ltr">20-hydroxyecdysone</span>) است. پژوهش انسانیِ مستقیم دربارهٔ خودِ تورکسترون به چند کارآزمایی کوچک و کوتاه‌مدت محدود می‌شود که <b>هیچ اثر معنی‌داری</b> بر ترکیب بدن، قدرت یا <span class="ltr">IGF-1</span> نشان نداده‌اند.</p>
+    </div></div>
+
+    <div class="driver"><div class="num">۳</div><div>
+      <h3>مطالعهٔ محوری، و ایرادهایش <span class="tag m">شواهد متوسط، مخدوش</span></h3>
+      <p>کارآزمایی <span class="ltr">Isenmann 2019</span> (۴۶ مرد، ۱۰ هفته، با حمایت مالی WADA) افزایش توده و قدرت با اکدیسترون گزارش کرد. اما: زیرگروه‌ها بسیار کوچک بودند؛ ترکیب بدن با روشِ کم‌دقتِ امپدانس بیوالکتریک (BIA) سنجیده شد؛ رابطهٔ دوز-پاسخ دیده نشد؛ کپسول‌ها حاویِ لوسین به‌عنوان مخدوش‌کننده بودند؛ و <b>مقدار واقعی مادهٔ فعال حدود ۹۴٪ کمتر از برچسب</b> بود. این مطالعه هرگز مستقلاً با نتیجهٔ مثبت تکرار نشده است.</p>
+    </div></div>
+
+    <div class="driver"><div class="num">۴</div><div>
+      <h3>مشکل حل‌نشدهٔ زیست‌فراهمی <span class="tag w">شواهد ضعیف</span></h3>
+      <p>زیست‌فراهمی خوراکی اکدیستروئیدها در مدل‌های پستانداری بسیار پایین (در حد ۱۰ درصد) و نیمه‌عمرشان بسیار کوتاه است؛ بخش عمدهٔ دوز خورده‌شده جذب نمی‌شود. ادعای رفع این مشکل با کمپلکس <span class="ltr">HPBCD</span> بر افزایش <b>حلالیت آزمایشگاهی</b> استوار است، نه بر اثباتِ افزایش جذب یا اثر بالینی در انسان.</p>
+    </div></div>
+
+    <div class="driver"><div class="num">۵</div><div>
+      <h3>فاجعهٔ کیفیت محصول <span class="tag s">شواهد قوی</span></h3>
+      <p>در تحلیل مستقل منتشرشده در <span class="ltr">JAMA Network Open</span> (۲۰۲۳)، از ۵۷ محصول آزمایش‌شده، <b>۲۳ محصول (۴۰٪) هیچ مقدار قابل‌تشخیصی</b> از مادهٔ برچسب‌خورده نداشتند، مقدار واقعی از ۰٫۰۲٪ تا ۳۳۴٪ برچسب متغیر بود، و ۷ محصول (۱۲٪) حاوی حداقل یک مادهٔ ممنوعه بودند. عصارهٔ اصیل این گیاه کمیاب و گران است — انگیزهٔ اقتصادیِ تقلب بالاست.</p>
+    </div></div>
+
+    <div class="driver"><div class="num">۶</div><div>
+      <h3>ایمنی: «طبیعی» یعنی «بی‌خطر» نیست <span class="tag w">گزارش موردی</span></h3>
+      <p>پروفایل کلی ملایم به‌نظر می‌رسد و اثرات آندروژنیک (طاسی، آکنه، سرکوب محور هورمونی) ندارد. با این حال، گزارش موردی از آسیب کبدی ناشی از دارو با ویژگی‌های خودایمنی پس از مصرف تورکسترون منتشر شده است. دادهٔ ایمنیِ بلندمدت وجود ندارد.</p>
+    </div></div>
+
+    <p style="margin-top:20px"><b>نکتهٔ جانبی مقرراتی:</b> اکدیسترون در فهرست ممنوعهٔ آژانس جهانی مبارزه با دوپینگ نیست، اما از سال ۲۰۲۰ در «برنامهٔ پایش» (Monitoring Program) قرار دارد. در اتحادیهٔ اروپا، عصاره‌های تغلیظ‌شدهٔ اکدیستروئیدی به‌احتمال زیاد مشمول مقررات «غذای جدید» (<span class="ltr">Novel Food</span>) هستند و مجوز رسمی ندارند.</p>
+  </section>
+
+  <section>
+    <h2>نردبان شواهد: سه ردیف مکمل</h2>
+    <div class="ladder">
+      <div class="lv res"><span class="price">ردیف ۳</span><span class="desc"><b>دستهٔ خاکستری و غیرقانونی</b><br>پروهورمون‌ها، SARMها، پپتیدهای تأییدنشده — تنها دسته‌ای که واقعاً «شبه‌استروئید» است، و دقیقاً به همین دلیل خطرناک و در اغلب کشورها غیرقانونی.</span></div>
+      <div class="lv now"><span class="price">ردیف ۲</span><span class="desc"><b>تقویت‌کننده‌های تستوسترون</b><br>اشواگاندا، تونگکات علی، تریبولوس، فادوجیا، اسید D-آسپارتیک — در بهترین حالت افزایش کوچک و در محدودهٔ فیزیولوژیک؛ بیشترشان بی‌اثر.</span></div>
+      <div class="lv sup"><span class="price">ردیف ۱</span><span class="desc"><b>مکمل‌هایی که واقعاً کار می‌کنند</b><br>کراتین، پروتئین کافی، کافئین، ویتامین D در صورت کمبود — اثر کوچک تا متوسط، ایمن، ارزان، و با شواهد انسانیِ محکم.</span></div>
+    </div>
+    <div class="legend">
+      <span><span class="dot" style="background:#faeeda;border:1px solid #ba7517"></span>بیشترین ریسک، کمترین توجیه</span>
+      <span><span class="dot" style="background:#e1f5ee;border:1px solid #1d9e75"></span>کمترین ریسک، بهترین شواهد</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>ردیف ۱ — آنچه شواهد از آن پشتیبانی می‌کند</h2>
+    <ul class="watch">
+      <li><b>کراتین مونوهیدرات <span class="tag s">قوی</span></b> — مؤثرترین و پرمطالعه‌ترین مکمل قانونی. متاآنالیزی شامل ۲۲ کارآزمایی و ۷۲۱ شرکت‌کننده نشان داد کراتین همراه با تمرین مقاومتی، توده بدون‌چربی را <span class="ltr">۱.۳۷</span> کیلوگرم بیش از دارونما افزایش می‌دهد (<span class="ltr">95% CI: 0.97–1.76</span>). دوز معمول: ۳ تا ۵ گرم در روز، به‌طور روزانه؛ فاز بارگیری ضروری نیست.</li>
+      <li><b>پروتئین کافی <span class="tag s">قوی</span></b> — نه یک مکمل جادویی، بلکه تأمین مادهٔ خام. متاآنالیزها نشان می‌دهند سود بیشترِ پروتئین برای رشد عضله حدود <span class="ltr">۱.۶</span> گرم به‌ازای هر کیلوگرم وزن بدن در روز به فلات می‌رسد. پخش‌کردن دریافت در چند وعده با مقدار کافی لوسین در هر وعده، سنتز پروتئین را بهتر تحریک می‌کند.</li>
+      <li><b>کافئین <span class="tag s">قوی</span></b> — واقعی‌ترین اثر عملکردیِ حاد در میان مکمل‌های ورزشی؛ اندازهٔ اثر حدود <span class="ltr">۰.۴</span> بر تکرار تا واماندگی و عملکرد استقامتی. بیانیهٔ موضعی انجمن بین‌المللی تغذیهٔ ورزشی دوز <span class="ltr">۳–۶</span> میلی‌گرم بر کیلوگرم را ۳۰ تا ۶۰ دقیقه پیش از فعالیت مؤثر می‌داند.</li>
+      <li><b>خواب کافی <span class="tag s">قوی</span></b> — مکمل نیست، اما اثرش از هر مکملی بزرگ‌تر است. تنها یک شب محرومیت از خواب، سنتز پروتئین عضله را حدود ۱۸٪ کاهش و کورتیزول را ۲۱٪ افزایش داد.</li>
+      <li><b>ویتامین D و اُمگا-۳ <span class="tag m">متوسط</span></b> — نقش حمایتی. اصلاح کمبود ویتامین D برای سلامت عضله و استخوان ارزشمند است، اما مکمل در فرد دارای سطح کافی، عملکرد یا تستوسترون را بالا نمی‌برد.</li>
+      <li><b>HMB <span class="tag w">ضعیف در افراد تمرین‌کرده</span></b> — ادعاهای بزرگ اولیه در پژوهش‌های مستقل تکرار نشد. متاآنالیزی روی ورزشکاران تمرین‌کرده هیچ اثری بر قدرت یا ترکیب بدن نیافت. اثر محدودی در جمعیت‌های در معرض تحلیل عضلانی ممکن است وجود داشته باشد.</li>
+      <li><b>بتا-آلانین، سیترولین، بتائین، بی‌کربنات <span class="tag w">اثر کوچک و اختصاصی</span></b> — کمک‌های ارگوژنیک با اندازهٔ اثر کوچک (عمدتاً زیر <span class="ltr">۰.۴</span>) و محدود به نوع خاصی از تلاش. هیچ‌کدام مستقیماً عضله نمی‌سازند.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>ردیف ۲ — دستهٔ «تقویت‌کنندهٔ تستوسترون»</h2>
+    <p>این دسته پرفروش‌ترین و در عین حال پرادعاترین بخش بازار است. ارزیابی صادقانه:</p>
+
+    <div class="fore"><h3>اشواگاندا <span class="tag m">متوسط، با سوگیری صنعت</span></h3>
+      <p>پرمطالعه‌ترین گیاه این دسته. کارآزمایی‌ها افزایش کوچک تستوسترون (حدود ۱۵ تا ۱۷ درصد)، کاهش کورتیزول و بهبود مختصر قدرت گزارش کرده‌اند. اما بسیاری از این کارآزمایی‌ها کوچک، کوتاه‌مدت و تأمین‌مالی‌شده توسط تولیدکنندهٔ عصاره‌اند. سود واقعی احتمالاً غیرمستقیم است: بهبود خواب و کاهش استرس.</p></div>
+
+    <div class="fore"><h3>تونگکات علی <span class="tag m">متوسط در افراد دارای کمبود</span></h3>
+      <p>شواهد در مردان با تستوسترون پایین بهتر از مردان سالم است؛ متاآنالیزی شامل ۹ مطالعه بهبود تستوسترون تام سرم را نشان داد. استانداردسازی عصاره تعیین‌کننده است و بیشتر محصولات بازار استاندارد نیستند.</p></div>
+
+    <div class="fore"><h3>تریبولوس ترستریس <span class="tag n">تقریباً هیچ</span></h3>
+      <p>در مرور سیستماتیکی شامل ۱۰ مطالعه و ۴۸۳ شرکت‌کننده، ۸ مطالعه هیچ تغییر معنی‌داری در پروفایل آندروژنی نیافتند. شواهدی برای افزایش تستوسترون در مردان سالم وجود ندارد.</p></div>
+
+    <div class="fore"><h3>اسید D-آسپارتیک <span class="tag n">بی‌اثر یا معکوس</span></h3>
+      <p>در افراد تمرین‌نکرده افزایش گذرا گزارش شده، اما در مردان تمرین‌کرده اثری ندارد — و در یک کارآزمایی با دوز بالاتر، تستوسترون تام و آزاد را <b>کاهش</b> داد.</p></div>
+
+    <div class="fore"><h3>فادوجیا آگرستیس <span class="tag n">پرچم قرمز ایمنی</span></h3>
+      <p>صفر کارآزمایی انسانی. کل شهرتش بر یک مطالعهٔ جوندگان استوار است — و <b>همان گروه پژوهشی</b> در مطالعات بعدی سمیت بیضه‌ای، کبدی و کلیوی وابسته به دوز را مستند کرد. دوزهای رایج تجاری به دوز سمّی در آن مدل نزدیک‌اند. توصیه: پرهیز.</p></div>
+
+    <div class="fore"><h3>DHEA، روی، منیزیم، بور، ماکا <span class="tag w">فقط در صورت کمبود</span></h3>
+      <p>ریزمغذی‌ها تنها زمانی تستوسترون را اصلاح می‌کنند که کمبود وجود داشته باشد. متاآنالیزی روی بیش از ۱۳۰۰ مرد مسن نشان داد DHEA تنها کاهش کوچکی در توده چربی می‌دهد و بر عملکرد جنسی، استخوان یا کیفیت زندگی اثری ندارد. ماکا ممکن است لیبیدو را بهبود دهد اما تستوسترون را تغییر نمی‌دهد. در بسیاری از کشورهای اروپایی DHEA داروی تجویزی است، نه مکمل آزاد.</p></div>
+  </section>
+
+  <section>
+    <h2>ردیف ۳ — دستهٔ واقعاً «شبه‌استروئید» (صرفاً اطلاعاتی)</h2>
+    <p>این بخش برای آگاهی و کاهش آسیب است؛ مصرف هیچ‌کدام توصیه نمی‌شود و هیچ راهنمایی عملی دربارهٔ آن‌ها ارائه نمی‌شود.</p>
+    <ul class="watch">
+      <li><b>SARMها</b> — با شعار «آنابولیک انتخابی بدون عوارض» فروخته می‌شوند، اما <b>هیچ SARMی تاکنون تأیید نهادهای دارویی را نگرفته است</b>؛ کارآزمایی‌های فاز ۳ در کاشکسی سرطان نقاط پایانی خود را برآورده نکردند. گزارش‌های متعدد آسیب کبدی کلستاتیک، سرکوب محور هورمونی و عوارض قلبی‌عروقی ثبت شده است. مطالعه‌ای در <span class="ltr">JAMA</span> نشان داد از ۴۴ محصول فروخته‌شدهٔ آنلاین، <b>تنها ۵۲٪ واقعاً حاوی SARM بودند</b>، ۳۹٪ حاوی داروی تأییدنشدهٔ دیگر، و ۹٪ بدون هیچ مادهٔ فعال.</li>
+      <li><b>پروهورمون‌ها و استروئیدهای طراحی‌شده</b> — سمیت کبدی (به‌ویژه فرم‌های ۱۷-آلکیله)، افت شدید HDL، و سرکوب تولید تستوسترون درون‌زا. در بسیاری از کشورها داروی تأییدنشده محسوب می‌شوند و تجارتشان جرم است.</li>
+      <li><b>پپتیدها</b> — دادهٔ انسانیِ بسیار محدود (عمدتاً پیش‌بالینی)، بدون تأیید نهادهای نظارتی، و محصولات «فقط برای تحقیق» بدون کنترل استریلیتی یا خلوص.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>مسیر پزشکی مشروع</h2>
+    <p>اگر هدف واقعی، رسیدگی به علائم افت هورمونی (کاهش میل جنسی، خستگی مزمن، افت خلق، از دست رفتن توده عضلانی) باشد، مسیر درست <b>ارزیابی پزشکی است، نه مکمل</b>.</p>
+    <p><b>سنجش صحیح:</b> نمونهٔ خون صبحگاهی و ناشتا، با <b>تکرار برای تأیید</b>؛ اندازه‌گیری تستوسترون تام، تستوسترون آزاد، <span class="ltr">SHBG</span>، و <span class="ltr">LH/FSH</span> برای تمایز اختلال اولیه از ثانویه.</p>
+    <p><b>آستانهٔ تشخیص:</b> راهنمای انجمن اورولوژی اروپا (EAU) آستانهٔ تستوسترون تام کمتر از <span class="ltr">۱۲ nmol/L</span> همراه با علائم بالینی را برای تشخیص هیپوگنادیسم توصیه می‌کند؛ محدودهٔ مرزی نیازمند محاسبهٔ تستوسترون آزاد است.</p>
+    <p><b>ایمنی درمان جایگزینی:</b> بزرگ‌ترین کارآزمایی ایمنی قلبی‌عروقی (<span class="ltr">TRAVERSE</span>، NEJM ۲۰۲۳) نشان داد درمان از نظر رخدادهای قلبی‌عروقی بزرگ نسبت به دارونما «غیرکهتر» است (<span class="ltr">۷.۰٪</span> در برابر <span class="ltr">۷.۳٪</span>)، اما در گروه درمان فیبریلاسیون دهلیزی (<span class="ltr">۳.۵٪</span> در برابر <span class="ltr">۲.۴٪</span>)، آسیب حاد کلیه و آمبولی ریه بیشتر بود. اریتروسیتوز و سرکوب باروری از عوارض شناخته‌شده‌اند و پایش منظم ضروری است.</p>
+    <p>نکتهٔ کلیدی: این درمان برای فردی که تستوسترون طبیعی دارد فایده‌ای ندارد و صرفاً محور هورمونی طبیعی را سرکوب می‌کند.</p>
+  </section>
+
+  <div class="synth">
+    <h2>جمع‌بندی</h2>
+    <p>پرسش «آیا مکملی هست که نزدیک به استروئید باشد؟» یک پیش‌فرض نادرست دارد: اینکه چنین طیفی پیوسته است. واقعیت این است که <span class="hinge">بین بهترین مکمل قانونی و ضعیف‌ترین استروئید، یک گسست وجود دارد، نه یک شیب</span>. مکمل‌های مؤثر، اثرشان کمکی و تدریجی است؛ و هر چیزی که واقعاً اثری استروئیدی داشته باشد، به همان دلیل، دارو محسوب می‌شود — با همان عوارض، همان نیاز به پایش پزشکی و همان محدودیت‌های قانونی.</p>
+    <p>در عمل، بیشترین بازده از جای دیگری می‌آید: تمرین مقاومتی با اضافه‌بار پیش‌رونده، پروتئین کافی، خواب منظم، و کراتین. کل دستهٔ بازاریابیِ «جایگزین قانونی استروئید» یک افسانهٔ تجاری است — و تورکسترون آخرین نمونهٔ آن، نه استثنای آن.</p>
+  </div>
+
+  <section>
+    <h2>مستندات علمی</h2>
+    <ol class="refs">
+      <li><b>Bhasin S, Storer TW, Berman N, et al.</b> The effects of supraphysiologic doses of testosterone on muscle size and strength in normal men. <i>N Engl J Med.</i> 1996;335(1):1–7.</li>
+      <li><b>Isenmann E, Ambrosio G, Joseph JF, et al.</b> Ecdysteroids as non-conventional anabolic agent: performance enhancement by ecdysterone supplementation in humans. <i>Arch Toxicol.</i> 2019;93(7):1807–1816.</li>
+      <li><b>Wilborn CD, Taylor LW, Campbell BI, et al.</b> Effects of methoxyisoflavone, ecdysterone, and sulfo-polysaccharide supplementation on training adaptations in resistance-trained males. <i>J Int Soc Sports Nutr.</i> 2006;3(2):19–27.</li>
+      <li><b>Harris M, et al.</b> Acute effects of turkesterone supplementation on IGF-1 and resting metabolic rate. <i>Muscles.</i> 2024;3(4):364–375.</li>
+      <li><b>Crisanti L, Antonio J, et al.</b> The effects of an ecdysteroid supplement on indices of physical and mental performance. <i>J Int Soc Sports Nutr.</i> 2025;22(1):2550140.</li>
+      <li><b>Isenmann E, et al.</b> How reliable is the labeling of a commercial phytosteroid product? A 12-week randomized double-blind training study. <i>J Int Soc Sports Nutr.</i> 2025;22(1):2540408.</li>
+      <li><b>Cohen PA, Avula B, Katragunta K, et al.</b> Presence and quantity of botanical ingredients with purported performance-enhancing properties in sports supplements. <i>JAMA Netw Open.</i> 2023;6(7):e2323879.</li>
+      <li><b>Lafont R, Dinan L.</b> Practical uses for ecdysteroids in mammals including humans: an update. <i>J Insect Sci.</i> 2003;3:7.</li>
+      <li><b>Gorelick-Feldman J, Parr MK, et al.</b> Ecdysteroids and skeletal muscle protein synthesis pathways. <i>J Agric Food Chem.</i> 2020;68(19):5275–5281.</li>
+      <li><b>Dinan L, et al.</b> Ecdysteroid metabolism in mammals: the fate of ingested 20-hydroxyecdysone. <i>J Steroid Biochem Mol Biol.</i> 2021;212:105921.</li>
+      <li><b>Kumpun S, Lafont R, et al.</b> Bioavailability and structural study of 20-hydroxyecdysone complexes with cyclodextrins. <i>Steroids.</i> 2018;134:101–108.</li>
+      <li><b>Dioh W, et al.</b> A Phase 1 study for safety and pharmacokinetics of BIO101 (20-hydroxyecdysone) in healthy young and older adults. <i>J Cachexia Sarcopenia Muscle.</i> 2023;14(3):1259–1273.</li>
+      <li><b>Fielding RA, et al.</b> BIO101 in sarcopenic seniors at risk of mobility disability: a double-blind randomised Phase 2b trial (SARA-INT). <i>J Cachexia Sarcopenia Muscle.</i> 2025;16(2):e13750.</li>
+      <li><b>Chilibeck PD, Kaviani M, Candow DG, Zello GA.</b> Effect of creatine supplementation during resistance training on lean tissue mass and muscular strength in older adults: a meta-analysis. <i>Open Access J Sports Med.</i> 2017;8:213–226.</li>
+      <li><b>Morton RW, Murphy KT, McKellar SR, et al.</b> A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength. <i>Br J Sports Med.</i> 2018;52(6):376–384.</li>
+      <li><b>Sanchez-Martinez J, Santos-Lozano A, et al.</b> Effects of beta-hydroxy-beta-methylbutyrate supplementation on strength and body composition in trained and competitive athletes: a meta-analysis. <i>J Sci Med Sport.</i> 2018;21(7):727–735.</li>
+      <li><b>Guest NS, VanDusseldorp TA, Nelson MT, et al.</b> International Society of Sports Nutrition position stand: caffeine and exercise performance. <i>J Int Soc Sports Nutr.</i> 2021;18(1):1.</li>
+      <li><b>Lamon S, Morabito A, Arentson-Lantz E, et al.</b> The effect of acute sleep deprivation on skeletal muscle protein synthesis and the hormonal environment. <i>Physiol Rep.</i> 2021;9(1):e14660.</li>
+      <li><b>Vårvik FT, Bjørnsen T, Gonzalez AM.</b> Acute effect of citrulline malate on repetition performance during strength training: a systematic review and meta-analysis. <i>Int J Sport Nutr Exerc Metab.</i> 2021;31(4):350–358.</li>
+      <li><b>Leisegang K, Finelli R, et al.</b> Eurycoma longifolia (Jack) improves serum total testosterone in men: a systematic review and meta-analysis. <i>Medicina.</i> 2022;58(8):1047.</li>
+      <li><b>Melville GW, Siegler JC, Marshall PWM.</b> Three and six grams supplementation of D-aspartic acid in resistance trained men. <i>J Int Soc Sports Nutr.</i> 2015;12:15. — و <i>PLoS One.</i> 2017;12(8):e0182630.</li>
+      <li><b>Yakubu MT, Akanji MA, Oladiji AT.</b> Aphrodisiac potentials and toxicological profile of <i>Fadogia agrestis</i> stem extract in male rats. <i>J Ethnopharmacol.</i> 2008 و <i>Hum Exp Toxicol.</i> 2009.</li>
+      <li><b>Corona G, Rastrelli G, Giagulli VA, et al.</b> Dehydroepiandrosterone supplementation in elderly men: a meta-analysis study of placebo-controlled trials. <i>J Clin Endocrinol Metab.</i> 2013;98(9):3615–3626.</li>
+      <li><b>Van Wagoner RM, Eichner A, Bhasin S, et al.</b> Chemical composition and labeling of substances marketed as selective androgen receptor modulators and sold via the internet. <i>JAMA.</i> 2017;318(20):2004–2010.</li>
+      <li><b>Dalton JT, Barnette KG, Bohl CE, et al.</b> The selective androgen receptor modulator GTx-024 (enobosarm) improves lean body mass and physical function: results of a double-blind, placebo-controlled Phase II trial. <i>J Cachexia Sarcopenia Muscle.</i> 2011;2(3):153–161.</li>
+      <li><b>Dobs AS, Boccia RV, Croot CC, et al.</b> Effects of enobosarm on muscle wasting and physical function in patients with cancer: a double-blind, randomised controlled Phase 2 trial. <i>Lancet Oncol.</i> 2013;14(4):335–345.</li>
+      <li><b>LiverTox: Clinical and Research Information on Drug-Induced Liver Injury.</b> Selective androgen receptor modulators (SARMs). National Institute of Diabetes and Digestive and Kidney Diseases.</li>
+      <li><b>Lincoff AM, Bhasin S, Flevaris P, et al.</b> Cardiovascular safety of testosterone-replacement therapy (TRAVERSE). <i>N Engl J Med.</i> 2023;389(2):107–117.</li>
+      <li><b>Salonia A, Bettocchi C, Boeri L, et al.</b> EAU Guidelines on Sexual and Reproductive Health. European Association of Urology, نسخهٔ به‌روزشده.</li>
+      <li><b>World Anti-Doping Agency.</b> Prohibited List و Monitoring Program (ecdysterone در برنامهٔ پایش از ۲۰۲۰).</li>
+    </ol>
+  </section>
+
+  <footer>سند اطلاع‌رسانی — بدون توصیهٔ درمانی. برای تصمیم‌گیری دربارهٔ هر مکمل یا دارو، با پزشک مشورت کنید.</footer>
+
+</div>
+
+<script>
+  Chart.defaults.font.family = "'Vazirmatn', sans-serif";
+  new Chart(document.getElementById('chart1'), {
+    type:'bar',
+    data:{
+      labels:['دارونما، بدون تمرین','دارونما + تمرین','تستوسترون، بدون تمرین','تستوسترون + تمرین'],
+      datasets:[{
+        data:[0.8, 1.9, 3.2, 6.1],
+        backgroundColor:['#cfd8d3','#cfd8d3','#1d9e75','#0f6e56'],
+        borderRadius:8,
+        borderWidth:0,
+        barPercentage:0.68
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{ display:false },
+        tooltip:{ callbacks:{ label:function(c){ return c.parsed.y + ' kg'; } } }
+      },
+      scales:{
+        y:{ beginAtZero:true, grid:{ color:'rgba(0,0,0,0.06)' },
+            title:{ display:true, text:'تغییر توده بدون‌چربی (kg)' },
+            ticks:{ callback:function(v){ return v; } } },
+        x:{ grid:{ display:false }, ticks:{ font:{ size:12 } } }
+      }
+    }
+  });
+</script>
+</body>
+</html>

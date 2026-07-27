@@ -1,0 +1,166 @@
+.hero {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1d9e75 0%, #0f6e56 100%);
+  color: white;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.heroContent h1 {
+  font-size: clamp(32px, 8vw, 56px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.heroContent p {
+  font-size: 18px;
+  margin-bottom: 32px;
+  opacity: 0.95;
+  font-weight: 300;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.buttonPrimary,
+.buttonSecondary {
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.buttonPrimary {
+  background: white;
+  color: #1d9e75;
+}
+
+.buttonPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.buttonSecondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.buttonSecondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.features {
+  padding: 80px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+  padding: 0 20px;
+}
+
+.featureCard {
+  padding: 32px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  border: 1px solid #e2d9c8;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.featureCard h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1d9e75;
+}
+
+.featureCard p {
+  color: #6b6358;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.cta {
+  padding: 80px 0;
+  text-align: center;
+  background: #f4efe6;
+  margin-top: 60px;
+}
+
+.cta h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #1c1a16;
+}
+
+.cta p {
+  font-size: 18px;
+  color: #6b6358;
+  margin-bottom: 32px;
+}
+
+.ctaButton {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #1d9e75;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  background: #0f6e56;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(29, 158, 117, 0.3);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0;
+  }
+
+  .features {
+    padding: 60px 0;
+  }
+
+  .cta {
+    padding: 60px 0;
+    margin-top: 40px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .buttonPrimary,
+  .buttonSecondary {
+    width: 100%;
+  }
+}
