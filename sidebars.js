@@ -10,11 +10,29 @@
 module.exports = {
   tutorialSidebar: [
     {
+      type: 'doc',
+      id: 'intro',
+      label: '📖 Welcome',
+    },
+    {
       type: 'category',
-      label: 'Research',
+      label: '🧪 Research',
       items: [
         'supplements-vs-steroids',
       ],
     },
+    {
+      type: 'category',
+      label: '📚 Coming Soon',
+      collapsed: true,
+      items: [
+        {
+          type: 'doc',
+          id: 'coming-soon/placeholder',
+          label: 'More research topics in development...',
+        },
+      ],
+    },
   ],
 };
+
