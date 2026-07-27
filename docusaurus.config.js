@@ -25,7 +25,7 @@ const config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          routeBasePath: '/',
+          routeBasePath: '/docs',
           editUrl: 'https://github.com/yourusername/fitness-research-ai/tree/main/',
         },
         blog: {
@@ -70,7 +70,7 @@ const config = {
           items: [
             {
               label: 'Supplements vs Steroids',
-              to: '/supplements-vs-steroids',
+              to: '/docs/supplements-vs-steroids',
             },
           ],
         },
